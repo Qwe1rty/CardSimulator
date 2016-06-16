@@ -6,15 +6,15 @@ public class Sim {
 	private static final int NUM_SIMULATIONS = 1000000;
 	private static ArrayList<Card> deck;
 	private static int win, lose;
-	
+
 	public static void main(String[] args) {
 		testAll();
-//		testRed();
-//		testBlack();
-//		testNumbers();
-//		testSuits();
-//		testChosenSuit(0);
-//		testJoker();
+		//		testRed();
+		//		testBlack();
+		//		testNumbers();
+		//		testSuits();
+		//		testChosenSuit(0);
+		//		testJoker();
 	}
 
 	private static ArrayList<Card> generateDeck() {
@@ -25,10 +25,10 @@ public class Sim {
 		deck.add(new Card(0, 4));
 		return deck;
 	}
-	
+
 	private static void testAll() {
 		testRed();
-		testBlack();
+		//		testBlack();
 		testNumbers();
 		testSuits();
 		testChosenSuit(0);
@@ -51,7 +51,7 @@ public class Sim {
 			System.out.println();
 		}
 	}
-	
+
 	private static void testBlack() {
 		for (int n = 1; n <= 5; n++) {
 			win = 0; 
@@ -68,7 +68,7 @@ public class Sim {
 			System.out.println();
 		}
 	}
-	
+
 	private static void testNumbers() {
 		ArrayList<Card> deck;
 		int win, lose;
@@ -88,7 +88,7 @@ public class Sim {
 			System.out.println();
 		}
 	}
-	
+
 	private static void testSuits() {
 		ArrayList<Card> deck;
 		int win, lose;
@@ -108,7 +108,7 @@ public class Sim {
 			System.out.println();
 		}
 	}
-	
+
 	private static void testChosenSuit(int suit) {
 		ArrayList<Card> deck;
 		int win, lose;
@@ -121,14 +121,22 @@ public class Sim {
 				if (Card.isAllChosenSuit(deck, n, suit)) win++;
 				else lose++;
 			}
-			System.out.println("All specific suit - " + n + " cards");
+			switch (suit) {
+			case 0: System.out.println("All diamonds - " + n + " cards");
+			break;
+			case 1: System.out.println("All clubs - " + n + " cards");
+			break;
+			case 2: System.out.println("All hearts - " + n + " cards");
+			break;
+			case 3: System.out.println("All spades - " + n + " cards");
+			}
 			System.out.println("Wins: " + win + " Loses: " + lose);
 			System.out.println("Win%: " + win / (win + lose + 0.0f) * 100);
 			System.out.println("Lose%: " + lose / (win + lose + 0.0f) * 100);
 			System.out.println();
 		}
 	}
-	
+
 	private static void testJoker() {
 		ArrayList<Card> deck;
 		int win, lose;
