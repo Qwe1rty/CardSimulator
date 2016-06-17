@@ -8,7 +8,7 @@ public class Sim {
 	private static int win, lose;
 
 	public static void main(String[] args) {
-		testAll();
+				testAll();
 		//		testRed();
 		//		testBlack();
 		//		testNumbers();
@@ -33,6 +33,7 @@ public class Sim {
 		testSuits();
 		testChosenSuit(0);
 		testJoker();
+		testCardOfThreeSuits(0, 1, 2);
 	}
 
 	private static void testRed() {
@@ -122,13 +123,13 @@ public class Sim {
 				else lose++;
 			}
 			switch (suit) {
-			case 0: System.out.println("All diamonds - " + n + " cards");
-			break;
-			case 1: System.out.println("All clubs - " + n + " cards");
-			break;
-			case 2: System.out.println("All hearts - " + n + " cards");
-			break;
-			case 3: System.out.println("All spades - " + n + " cards");
+				case 0: System.out.println("All diamonds - " + n + " cards");
+				break;
+				case 1: System.out.println("All clubs - " + n + " cards");
+				break;
+				case 2: System.out.println("All hearts - " + n + " cards");
+				break;
+				case 3: System.out.println("All spades - " + n + " cards");
 			}
 			System.out.println("Wins: " + win + " Loses: " + lose);
 			System.out.println("Win%: " + win / (win + lose + 0.0f) * 100);
@@ -155,6 +156,24 @@ public class Sim {
 			System.out.println("Lose%: " + lose / (win + lose + 0.0f) * 100);
 			System.out.println();
 		}
+	}
+
+	private static void testCardOfThreeSuits(int suit1, int suit2, int suit3) {
+		ArrayList<Card> deck;
+		int win, lose;
+
+		win = 0; 
+		lose = 0;
+		for (int i = 0; i < NUM_SIMULATIONS; i++) {
+			deck = generateDeck();
+			if (Card.isCardOfThreeSuits(deck, suit1, suit2, suit3)) win++;
+			else lose++;
+		}
+		System.out.println("Is of Three Suits");
+		System.out.println("Wins: " + win + " Loses: " + lose);
+		System.out.println("Win%: " + win / (win + lose + 0.0f) * 100);
+		System.out.println("Lose%: " + lose / (win + lose + 0.0f) * 100);
+		System.out.println();
 	}
 
 }

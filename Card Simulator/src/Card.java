@@ -82,4 +82,9 @@ public class Card {
 				return true;
 		return false;
 	}
+	
+	public static boolean isCardOfThreeSuits(ArrayList<Card> deck, int suit1, int suit2, int suit3) {
+		Card card = deck.remove(new Random().nextInt(deck.size()));
+		return card.getSuit() == suit1 || card.getSuit() == suit2 || card.getSuit() == suit3;
+	}
 }
